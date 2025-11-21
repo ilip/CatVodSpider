@@ -40,8 +40,8 @@ public class AList extends Spider {
 
     private List<Filter> getFilter() {
         List<Filter> items = new ArrayList<>();
-        items.add(new Filter("type", "排序類型", Arrays.asList(new Filter.Value("預設", ""), new Filter.Value("名稱", "name"), new Filter.Value("大小", "size"), new Filter.Value("修改時間", "date"))));
-        items.add(new Filter("order", "排序方式", Arrays.asList(new Filter.Value("預設", ""), new Filter.Value("⬆", "asc"), new Filter.Value("⬇", "desc"))));
+        items.add(new Filter("type", "排序类型", Arrays.asList(new Filter.Value("预设", ""), new Filter.Value("名称", "name"), new Filter.Value("大小", "size"), new Filter.Value("修改时间", "date"))));
+        items.add(new Filter("order", "排序方式", Arrays.asList(new Filter.Value("预设", ""), new Filter.Value("⬆", "asc"), new Filter.Value("⬇", "desc"))));
         return items;
     }
 
@@ -62,7 +62,7 @@ public class AList extends Spider {
     private String post(Drive drive, String url, String param, boolean retry) {
         String response = OkHttp.post(url, param, drive.getHeader()).getBody();
         SpiderDebug.log(response);
-        if (retry && response.contains("Guest user is disabled") && login(drive)) return post(drive, url, param, false);
+        if (retry && response.contains("Login to the") && login(drive)) return post(drive, url, param, false);
         return response;
     }
 

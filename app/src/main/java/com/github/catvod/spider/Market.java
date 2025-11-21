@@ -53,7 +53,7 @@ public class Market extends Spider {
         try {
             OkHttp.cancel(TAG);
             String name = Uri.parse(action).getLastPathSegment();
-            Notify.show("正在下載..." + name);
+            Notify.show("正在下载..." + name);
             Response response = OkHttp.newCall(action, TAG);
             File file = Path.create(new File(Path.download(), name));
             download(file, response.body().byteStream());
@@ -61,7 +61,7 @@ public class Market extends Spider {
             if (file.getName().endsWith(".apk")) FileUtil.openFile(file);
             checkCopy(action);
             response.close();
-            return Result.notify("下載完成");
+            return Result.notify("下载完成");
         } catch (Exception e) {
             return Result.notify(e.getMessage());
         }
